@@ -7,7 +7,7 @@ Manage Jolie is a web application, which aims to manage cosmetic products and cr
 ### Features
 - Home
   <p align="center">
-   <img width="460" height="300" src="https://github.com/duyendumy/manage-jolie/assets/119155923/eea1f195-8955-4dac-845b-a179756563cc">
+   <img src="https://github.com/duyendumy/manage-jolie/assets/119155923/eea1f195-8955-4dac-845b-a179756563cc">
   </p>
   
 - Manage Products
