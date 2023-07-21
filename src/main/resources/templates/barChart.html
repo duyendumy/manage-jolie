@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<title>Jolie management</title>
+<style>
+.block_container {
+	text-align: center;
+}
+
+.block {
+	display: inline;
+	margin: 20px;
+}
+
+.fcard {
+	display: flex;
+	justify-content: space-evenly;
+}
+</style>
+<script>
+
+    function checkDate() {
+    var startDate = document.getElementById("StartDate").value;
+    var endDate = document.getElementById("EndDate").value;
+
+    if ((Date.parse(startDate) >= Date.parse(endDate))) {
+        alert("End Date should be greater than Begin Date");
+        document.getElementById("EndDate").value = "";
+    }
+};
+</script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script th:inline="javascript">
+    $(function(){
+        Highcharts.chart('container1', {
+        	title: {
+                text: 'Logarithmic axis demo'
+            },
+
+            xAxis: {
+                tickInterval: 1,
+                type: 'logarithmic',
+                categories: [[${datePayment}]],
+            },
+
+            yAxis: {
+                type: 'logarithmic',
+                minorTickInterval: 0.1,
+                accessibility: {
+                    rangeDescription: 'Range: 1000 to 10000'
+                }
+            },
+
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br />',
+                pointFormat: 'x = {point.x}, y = {point.y}'
+            },
+
+            series: [{
+            	data: [[${totalPrice}]],
+                pointStart: 1
+            }]
+        });
+    });
+</script>
+</head>
+<body>
+	<main>
+	<div id="container1" style="width: 550px; height: 400px;"></div>
+	</main>
+</body>
+</html>
